@@ -158,3 +158,14 @@ function populasyonBulma() {
 
    container.append(populationDiv)
 }
+
+
+const btn3 = document.createElement('button')
+btn3.textContent = 'clear'
+btn3.setAttribute('class', 'btn btn-dark mt-2')
+
+container.append(btn3)
+
+btn3.addEventListener('click', () => {
+    location.reload()
+})
