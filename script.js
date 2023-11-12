@@ -122,8 +122,39 @@ btn2.addEventListener('click', populasyonBulma)
 
 function populasyonBulma() {
     const populationDiv = document.createElement('div')
+    populationDiv.classList.add('mt-3')
+    populationDiv.style.width = '100%'
 
-    countries.forEach((ulke)=>{
-        console.log(ulke);
-    })
+   countries.sort((a, b) => b.population - a.population)
+
+   countries.forEach((ulke) =>{
+
+    const div = document.createElement('div')
+    div.setAttribute('class', 'd-flex justify-content-between')
+
+    const ulkeIsim = document.createElement('p') 
+    ulkeIsim.textContent = ulke.name
+
+    const yuzdePop = document.createElement('div')
+    let hesap = (ulke.population / 8_000_000_000) * 100
+
+    yuzdePop.style.height = "20px"
+    yuzdePop.style.width = `${hesap.toFixed(2)}%`
+    yuzdePop.style.backgroundColor = 'black'
+    yuzdePop.style.borderRadius = '20px'
+    yuzdePop.style.color = 'white'
+    yuzdePop.textContent = `${hesap.toFixed(2)}%`
+
+    const population = document.createElement('p')
+    population.textContent = ulke.population
+
+    div.append(ulkeIsim)
+    div.append(yuzdePop)
+    div.append(population)
+
+    populationDiv.append(div)
+
+   })
+
+   container.append(populationDiv)
 }
